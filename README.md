@@ -51,24 +51,23 @@
   - 其中，对我们有影响的参数是线程数（设置发送请求的用户数目），Ramp-up period： 每个请求发生的总时间间隔，单位是秒，循环次数（请求发生的重复次数）。如果我们需要JMeter模拟五个请求者（也就是五个线程），每个请求者连续请求两次，则如下图设置：
 ![](https://testerhome.com/uploads/photo/2018/5b9902cd-1887-463c-9308-7f7005119640.png!large)
 
-
  ---
 ### 二、添加请求
  - 我们要访问一个网页，比如是百度首页，则是http请求，则添加http请求，在线程组上右键---“添加”---“Sampler”---“HTTP请求”
-![](https://testerhome.com/uploads/photo/2018/838636c1-df8f-43a5-b4fd-bbf7e895ec66.png!large)
+![](https://testerhome.com/uploads/photo/2018/b80fe452-ab06-491f-8a6a-05ad5313870f.png!large)
 
  - http请求的属性值中“Web服务器名称或IP”填写www.baidu.com就可以了：如下图所示：
-![](https://testerhome.com/uploads/photo/2018/adf43487-4664-44c9-ad2b-e47ab30d126d.png!large)
+![](https://testerhome.com/uploads/photo/2018/044f2c11-2e84-496e-8d5b-a7c477f928d9.png!large)
 
  ---
 ### 三、加监视器
  - 监视器的种类很多，根据自己的需要添加，我们选择“查看结果树”。在线程组上右键---“添加”---“监视器”---“查看结果树”，如下图所示：
-![](https://testerhome.com/uploads/photo/2018/322bf2de-9d65-4bf7-b955-3d3d728b7905.png!large)
+![](https://testerhome.com/uploads/photo/2018/f3fdf349-5904-472e-877e-99f2125c64c4.png!large)
 
  ---
 ### 四、运行
-![](https://testerhome.com/uploads/photo/2018/ac1793e6-50cb-4a85-88ec-3a0f200f4b81.png!large)
-![](https://testerhome.com/uploads/photo/2018/b9bfc781-df84-440f-824b-51d93254a089.png!large)
+![](https://testerhome.com/uploads/photo/2018/69c35bd4-34d7-4119-ab43-e88aef394c3c.png!large)
+![](https://testerhome.com/uploads/photo/2018/bcaab82d-a6de-46a4-994a-2daf6f06e6e8.png!large)
  - 运行完毕后，即可查看结果
 
  ---
@@ -94,8 +93,8 @@
  - Excel做的数据分析表，更加美观，清晰明朗
 
 ### 六、Jnekins持续集成：
-![](https://testerhome.com/uploads/photo/2018/cb0e17fc-7e19-4e25-ac2f-4bcf8ce7cfe9.png!large)
-![](https://testerhome.com/uploads/photo/2018/8daa0b0b-892b-48c4-b09f-5454a9852cd7.png!large)
+![](https://testerhome.com/uploads/photo/2018/184cfd76-e1f2-4e5d-9832-ad3043a83c98.png!large)
+![](https://testerhome.com/uploads/photo/2018/e415b91f-83ce-4dd0-8779-d05691713baf.png!large)
  - 搭建Jenkins环境，具体请参考: https://blog.csdn.net/wuxuehong0306/article/details/50016547
  - 配置Jenkins自动化持续集成项目，即可实现远程服务器自动（构建，编译，打包）运行脚本，发送邮件测试报告等
  
