@@ -1,0 +1,53 @@
+# Prometheus全局配置项
+global:
+  scrape_interval: 15s # 设定抓取数据的周期，默认为1min
+  evaluation_interval: 15s # 设定更新rules文件的周期，默认为1min
+  scrape_timeout: 15s # 设定抓取数据的超时时间，默认为10s
+
+
+# scape配置
+scrape_configs:
+  # job_name默认写入timeseries的labels中，可以用于查询使用
+  - job_name: 'prometheus'
+    scrape_interval: 15s # 抓取周期，默认采用global配置
+    static_configs:
+    - targets: ['172.19.5.240:9090'] # prometheus所要抓取数据的地址，即instance实例项
+
+  - job_name: '172.19.5.240'
+    scrape_interval: 8s
+    static_configs:
+    - targets: ['172.19.5.240:9100']
+      labels:
+        instance: 172.19.5.240
+        
+  - job_name: '172.19.5.241'
+    scrape_interval: 8s
+    static_configs:
+    - targets: ['172.19.5.241:9100']
+      labels:
+        instance: 172.19.5.241
+        
+  - job_name: '172.19.5.160'
+    scrape_interval: 8s
+    static_configs:
+    - targets: ['172.19.5.160:9100']
+      labels:
+        instance: 172.19.5.160
+           
+  - job_name: 'cadvisor'
+    static_configs:
+    - targets: ['172.19.5.240:8899']
+      labels:
+        instance: cadvisor
+
+  - job_name: 'redis_exporter'
+    static_configs:
+    - targets: [ '172.19.5.240:9121' ]
+      labels:
+        instance: redis
+
+  - job_name: 'mysql_exporter'
+    static_configs:
+    - targets: [ '172.19.5.240:9104' ]
+      labels:
+        instance: redis

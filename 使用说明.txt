@@ -1,0 +1,106 @@
+软件包下载：
+ 地址：http://172.19.5.222:8081/Ankki.Jmeter.Test/Ankki.Jmeter.Test.zip
+ 
+#----------------------------------------------- Windows系统使用说明 --------------------------------------------------------#
+1.创建目录 D:\Program\Jmeter
+ 1.1 解压Ankki.Jmeter.Test.zip到当前目录
+ 1.2 进入Ankki.Jmeter.Test\JDK\Win目录
+ 1.3 解压jdk-11.0.15.zip到C:\Program Files\Java目录
+ 
+ 1.4 进入Ankki.Jmeter.Test\Jmeter目录
+ 1.5 解压apache-jmeter-5.4.1.zip到当前目录
+
+2.打开系统环境变量配置，添加Java系统变量
+变量名：JAVA_HOME
+变量值：C:\Program Files\Java\jdk-11.0.15
+变量名：CLASSPATH
+变量值：.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;%Ant_HOME%\lib
+变量名：JAVA_TOOL_OPTIONS
+变量值：-Dfile.encoding=UTF-8
+变量名：path 
+追加变量值：;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
+
+3.打开系统环境变量配置，添加Jmeter系统变量
+变量名：JMETER_HOME
+变量值：D:\Program\Jmeter\apache-jmeter-5.4.1
+变量名：path 
+追加变量值：%JMETER_HOME%\bin
+
+4.查看Java版本号
+java -version
+
+5.查看Jmeter版本号
+jmeter -v
+
+6.打开Grafana平台
+地址：http://172.19.5.240:3000
+账号: ankki	
+密码: ankki111111
+
+Linux性能监控：
+http://172.19.5.240:3000/d/xfpJB9FGz/1-node-exporter-for-prometheus-dashboard-en-20201010?orgId=1&refresh=5s
+
+Linux性能监控：
+http://172.19.5.240:3000/d/frankletzz/jmeter-report-influxdb2-0?orgId=1
+
+7.修改脚本，设置并发量
+编辑: Startup_Win.sh
+搜索: thread_number_array
+添加: (10 20 40 60 80)，多并发用空格隔开
+
+8.运行脚本，查看监控数据
+cmd Startup_Win.sh
+
+#----------------------------------------------- Linux系统使用说明 --------------------------------------------------------#
+1.上传Ankki.Jmeter.Test.zip压缩包到 home 目录
+ 1.1 cd /home
+ 1.2 unzip -o Ankki.Jmeter.Test.zip -d Ankki.Jmeter.Test
+
+ 1.3 cd /home/Ankki.Jmeter.Test/JDK/Linux
+ 1.4 tar -zxvf jdk-11.0.15_linux-x64_bin.tar.gz
+ 
+ 1.5 cd /home/Ankki.Jmeter.Test/Jmeter
+ 1.6 unzip -o apache-jmeter-5.4.1.zip -d apache-jmeter-5.4.1
+ 
+ 1.7 cd /home/Ankki.Jmeter.Test
+ 1.7 chmod -R 777 /home/Ankki.Jmeter.Test
+ 
+2.配置java环境变量，运行以下命令
+vi /etc/profile
+
+3.复制以下命令，粘贴到/etc/profile，其中路径根据自己电脑路径修改
+export JAVA_HOME=/home/Ankki.Jmeter.Test/JDK/Linux/jdk-11.0.15
+export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib
+export PATH=$JAVA_HOME/bin:$PATH
+
+export JMETER_HOME=/home/Ankki.Jmeter.Test/Jmeter/apache-jmeter-5.4.1
+export PATH=$JMETER_HOME/bin:$PATH
+export CLASSPATH=$JMETER_HOME/lib/ext/ApacheJmeter_core.jar:$JMETER_HOME/lib/jorphan.jar:$CLASSPATH
+
+4.重置配置文件
+source /etc/profile
+
+5.查看Java版本号
+java -version
+
+6.查看Jmeter版本号
+jmeter -v
+
+7.打开Grafana平台
+地址：http://172.19.5.240:3000
+账号: ankki	
+密码: ankki111111
+
+Linux性能监控：
+http://172.19.5.240:3000/d/xfpJB9FGz/1-node-exporter-for-prometheus-dashboard-en-20201010?orgId=1&refresh=5s
+
+Linux性能监控：
+http://172.19.5.240:3000/d/frankletzz/jmeter-report-influxdb2-0?orgId=1&from=now-5m&to=now&refresh=5s
+
+8.修改脚本，设置并发量
+vi Startup_Win.sh
+搜索: thread_number_array
+添加: (10 20 40 60 80)，多并发用空格隔开
+
+9.运行脚本，查看监控数据
+./Startup_Linux.sh
